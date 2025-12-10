@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wilma - توثيق إطار العمل السلكي</title>
+    <title>Wilma - Wireframe Documentation</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Tajawal:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
         * {
             margin: 0;
@@ -15,7 +15,7 @@
         }
 
         body {
-            font-family: 'Cairo', 'Tajawal', sans-serif;
+            font-family: 'Inter', 'Cairo', sans-serif;
             background: linear-gradient(135deg, #5c03bc 0%, #3c1361 50%, #52307c 100%);
             background-size: 400% 400%;
             animation: gradientWave 15s ease infinite;
@@ -23,6 +23,10 @@
             line-height: 1.8;
             color: #333;
             min-height: 100vh;
+        }
+
+        [dir="rtl"] {
+            font-family: 'Cairo', 'Inter', sans-serif;
         }
 
         @keyframes gradientWave {
@@ -37,6 +41,54 @@
             100% {
                 background-position: 0% 50%;
             }
+        }
+
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(92, 3, 188, 0.3);
+            animation: slideInRight 0.8s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .language-selector label {
+            font-weight: 600;
+            color: #5c03bc;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .language-selector select {
+            padding: 8px 15px;
+            border: 2px solid #b491c8;
+            border-radius: 8px;
+            background: white;
+            color: #3c1361;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .language-selector select:hover {
+            border-color: #5c03bc;
+            box-shadow: 0 4px 12px rgba(92, 3, 188, 0.2);
         }
 
         .container {
@@ -112,18 +164,18 @@
             position: relative;
             z-index: 1;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            animation: slideInRight 1s ease;
+            animation: slideInDown 1s ease;
         }
 
-        @keyframes slideInRight {
+        @keyframes slideInDown {
             from {
                 opacity: 0;
-                transform: translateX(-50px);
+                transform: translateY(-50px);
             }
 
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateY(0);
             }
         }
 
@@ -132,18 +184,18 @@
             opacity: 0.95;
             position: relative;
             z-index: 1;
-            animation: slideInLeft 1s ease 0.3s backwards;
+            animation: slideInUp 1s ease 0.3s backwards;
         }
 
-        @keyframes slideInLeft {
+        @keyframes slideInUp {
             from {
                 opacity: 0;
-                transform: translateX(50px);
+                transform: translateY(50px);
             }
 
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateY(0);
             }
         }
 
@@ -152,10 +204,15 @@
             padding: 30px;
             margin: 20px 0;
             border-radius: 20px;
-            border-right: 5px solid #5c03bc;
+            border-left: 5px solid #5c03bc;
             position: relative;
             z-index: 1;
             animation: pulse 3s ease infinite;
+        }
+
+        [dir="rtl"] .student-info {
+            border-left: none;
+            border-right: 5px solid #5c03bc;
         }
 
         @keyframes pulse {
@@ -210,18 +267,35 @@
             padding-bottom: 15px;
             font-weight: 800;
             position: relative;
-            animation: slideInRight 0.8s ease;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .section h2::after {
             content: '';
             position: absolute;
             bottom: -4px;
-            right: 0;
+            left: 0;
             width: 0;
             height: 4px;
             background: linear-gradient(90deg, #5c03bc, #b491c8);
             animation: expandLine 2s ease forwards;
+        }
+
+        [dir="rtl"] .section h2::after {
+            left: auto;
+            right: 0;
         }
 
         @keyframes expandLine {
@@ -327,7 +401,7 @@
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, rgba(92, 3, 188, 0.1), rgba(180, 145, 200, 0.1));
@@ -393,16 +467,25 @@
 
         .info-box {
             background: linear-gradient(135deg, rgba(92, 3, 188, 0.08), rgba(180, 145, 200, 0.08));
-            border-right: 6px solid #5c03bc;
+            border-left: 6px solid #5c03bc;
             padding: 30px 35px;
             margin: 30px 0;
             border-radius: 15px;
-            animation: slideInRight 0.8s ease;
+            animation: slideInLeft 0.8s ease;
             transition: all 0.3s ease;
+        }
+
+        [dir="rtl"] .info-box {
+            border-left: none;
+            border-right: 6px solid #5c03bc;
         }
 
         .info-box:hover {
             background: linear-gradient(135deg, rgba(92, 3, 188, 0.12), rgba(180, 145, 200, 0.12));
+            transform: translateX(10px);
+        }
+
+        [dir="rtl"] .info-box:hover {
             transform: translateX(-10px);
         }
 
@@ -458,13 +541,29 @@
 
         .feature-item:hover {
             border-color: #5c03bc;
-            transform: translateX(-5px);
+            transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(92, 3, 188, 0.15);
         }
 
         .feature-icon {
             font-size: 28px;
-            animation: rotate 3s ease infinite;
+            animation: wiggle 3s ease infinite;
+        }
+
+        @keyframes wiggle {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-10deg);
+            }
+
+            75% {
+                transform: rotate(10deg);
+            }
         }
 
         .color-palette {
@@ -559,6 +658,12 @@
             .flow-steps {
                 grid-template-columns: 1fr;
             }
+
+            .language-selector {
+                position: static;
+                margin-bottom: 20px;
+                text-align: center;
+            }
         }
 
         .journey-flow {
@@ -578,7 +683,7 @@
             background: linear-gradient(135deg, #f8f4fc 0%, #ede7f6 100%);
             border-radius: 15px;
             transition: all 0.3s ease;
-            animation: slideInRight 0.8s ease backwards;
+            animation: slideInLeft 0.8s ease backwards;
         }
 
         .journey-step:nth-child(odd) {
@@ -590,8 +695,12 @@
         }
 
         .journey-step:hover {
-            transform: translateX(-10px);
+            transform: translateX(10px);
             box-shadow: 0 8px 20px rgba(92, 3, 188, 0.15);
+        }
+
+        [dir="rtl"] .journey-step:hover {
+            transform: translateX(-10px);
         }
 
         .journey-arrow {
@@ -628,9 +737,13 @@
             background: linear-gradient(135deg, #5c03bc 0%, #52307c 100%);
             color: white;
             padding: 20px;
-            text-align: right;
+            text-align: left;
             font-weight: 700;
             font-size: 18px;
+        }
+
+        [dir="rtl"] .specs-table th {
+            text-align: right;
         }
 
         .specs-table td {
@@ -661,8 +774,13 @@
         }
 
         ul {
-            margin-right: 30px;
+            margin-left: 30px;
             margin-top: 15px;
+        }
+
+        [dir="rtl"] ul {
+            margin-left: 0;
+            margin-right: 30px;
         }
 
         ul li {
@@ -676,399 +794,673 @@
             animation: wiggle 2s ease infinite;
         }
 
-        @keyframes wiggle {
+        .lang-content {
+            display: none;
+        }
 
-            0%,
-            100% {
-                transform: rotate(0deg);
-            }
-
-            25% {
-                transform: rotate(-10deg);
-            }
-
-            75% {
-                transform: rotate(10deg);
-            }
+        .lang-content.active {
+            display: block;
         }
     </style>
 </head>
 
 <body>
+    <div class="language-selector">
+        <label for="languageSelect">🌐 Language:</label>
+        <select id="languageSelect" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="fi">Suomi (Finnish)</option>
+            <option value="sv">Svenska (Swedish)</option>
+            <option value="ar">العربية (Arabic)</option>
+        </select>
+    </div>
+
     <div class="container">
-        <div class="header">
-            <h1><span class="emoji-icon">📱</span> منصة Wilma</h1>
-            <p>إطار سلكي متوسط الدقة - تسجيل غياب الطالب</p>
+        <!-- English Content -->
+        <div class="lang-content active" id="lang-en">
+            <div class="header">
+                <h1><span class="emoji-icon">📱</span> Wilma Platform</h1>
+                <p>Mid-Fidelity Wireframe - Student Absence Marking</p>
 
-            <div class="student-info">
-                <h3><span class="emoji-icon">👨‍🎓</span> معلومات الطالب</h3>
-                <p><strong>الاسم:</strong> Abbas Alfarttoosi</p>
-                <p><strong>الكلية:</strong> Business College Helsinki</p>
-                <p><strong>التاريخ:</strong> 2026</p>
+                <div class="student-info">
+                    <h3><span class="emoji-icon">👨‍🎓</span> Student Information</h3>
+                    <p><strong>Name:</strong> Abbas Alfarttoosi</p>
+                    <p><strong>College:</strong> Business College Helsinki</p>
+                    <p><strong>Year:</strong> 2026</p>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="section">
+                    <h2><span class="emoji-icon">📋</span> Project Overview</h2>
+                    <div class="info-box">
+                        <h4>Assignment Details</h4>
+                        <p><strong>Platform:</strong> Wilma (Finnish school management system)</p>
+                        <p><strong>Feature:</strong> Student self-reporting absence for the next day</p>
+                        <p><strong>Device Type:</strong> Mobile (iOS/Android)</p>
+                        <p><strong>Wireframe Fidelity:</strong> Mid-fidelity</p>
+                        <p><strong>Design Tool:</strong> Digital wireframing with AI assistance</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">🎨</span> Wireframe Design</h2>
+                    <div class="wireframe-container">
+                        <p style="margin-bottom: 25px; font-size: 18px; color: #3c1361; font-weight: 600;">
+                            <strong class="highlight">4-Screen User Flow:</strong> Home → Absences → Report Form →
+                            Confirmation
+                        </p>
+                        <img src="Wilma_Absence_Wireframe.png" alt="Wilma Absence Marking Wireframe"
+                            class="wireframe-image">
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">🔄</span> User Flow Steps</h2>
+                    <div class="flow-steps">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-title">Home Dashboard</div>
+                            <div class="step-description">
+                                Student logs into Wilma app and navigates to the "Poissaolot" (Absences) section from
+                                the main menu.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-title">Absences Overview</div>
+                            <div class="step-description">
+                                View absence history and tap the "+ Ilmoita poissaolo" button to start reporting a new
+                                absence.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-title">Report Form</div>
+                            <div class="step-description">
+                                Fill in tomorrow's date, select a reason (illness, doctor appointment, etc.), and
+                                optionally add details.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-title">Confirmation</div>
+                            <div class="step-description">
+                                Receive success confirmation with submitted details and notification that guardian has
+                                been informed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">✨</span> Key Features</h2>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">🎯</span>
+                            <span>Simple Navigation</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📅</span>
+                            <span>Pre-filled Date</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📝</span>
+                            <span>Quick Reason Selection</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">💬</span>
+                            <span>Optional Details</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Instant Confirmation</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔔</span>
+                            <span>Guardian Notification</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">🎨</span> Design Specifications</h2>
+
+                    <h3>Harmonious Color Palette</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #5c03bc;"></div>
+                            <div class="color-label">Deep Purple</div>
+                            <div class="color-code">#5c03bc</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #3c1361;"></div>
+                            <div class="color-label">Dark Purple</div>
+                            <div class="color-code">#3c1361</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #52307c;"></div>
+                            <div class="color-label">Medium Purple</div>
+                            <div class="color-code">#52307c</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #b491c8;"></div>
+                            <div class="color-label">Light Purple</div>
+                            <div class="color-code">#b491c8</div>
+                        </div>
+                    </div>
+
+                    <h3>Typography & Spacing</h3>
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Specification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Headers</strong></td>
+                                <td>20px, Bold, Sans-serif</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Body Text</strong></td>
+                                <td>16px, Regular, Sans-serif</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Button Text</strong></td>
+                                <td>16px, Semi-bold, Sans-serif</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Labels</strong></td>
+                                <td>14px, Regular, Sans-serif</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Screen Padding</strong></td>
+                                <td>16px</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Element Spacing</strong></td>
+                                <td>12px</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Button Height</strong></td>
+                                <td>48px</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Input Field Height</strong></td>
+                                <td>44px</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p><strong class="highlight">Wilma Platform - Student Absence Marking Wireframe</strong></p>
+                <p><strong>Student:</strong> Abbas Alfarttoosi | <strong>College:</strong> Business College Helsinki</p>
+                <p>Mid-Fidelity Mobile Wireframe | Created: 2026</p>
+                <p style="margin-top: 15px; font-size: 15px;">
+                    This wireframe demonstrates a user-centered approach to absence reporting,<br>
+                    prioritizing simplicity, speed, and accessibility for Finnish students.
+                </p>
             </div>
         </div>
 
-        <div class="content">
-            <!-- نظرة عامة على المشروع -->
-            <div class="section">
-                <h2><span class="emoji-icon">📋</span> نظرة عامة على المشروع</h2>
-                <div class="info-box">
-                    <h4>تفاصيل المهمة</h4>
-                    <p><strong>المنصة:</strong> Wilma (نظام إدارة المدارس الفنلندي)</p>
-                    <p><strong>الميزة:</strong> تسجيل الطالب لغيابه في اليوم التالي</p>
-                    <p><strong>نوع الجهاز:</strong> الهاتف المحمول (iOS/Android)</p>
-                    <p><strong>دقة الإطار السلكي:</strong> متوسطة الدقة</p>
-                    <p><strong>أداة التصميم:</strong> تصميم رقمي بمساعدة الذكاء الاصطناعي</p>
+        <!-- Finnish Content -->
+        <div class="lang-content" id="lang-fi">
+            <div class="header">
+                <h1><span class="emoji-icon">📱</span> Wilma-alusta</h1>
+                <p>Keskitason tarkkuus - Opiskelijan poissaoloilmoitus</p>
+
+                <div class="student-info">
+                    <h3><span class="emoji-icon">👨‍🎓</span> Opiskelijan tiedot</h3>
+                    <p><strong>Nimi:</strong> Abbas Alfarttoosi</p>
+                    <p><strong>Koulu:</strong> Business College Helsinki</p>
+                    <p><strong>Vuosi:</strong> 2026</p>
                 </div>
             </div>
 
-            <!-- عرض الإطار السلكي -->
-            <div class="section">
-                <h2><span class="emoji-icon">🎨</span> تصميم الإطار السلكي</h2>
-                <div class="wireframe-container">
-                    <p style="margin-bottom: 25px; font-size: 18px; color: #3c1361; font-weight: 600;">
-                        <strong class="highlight">تدفق المستخدم من 4 شاشات:</strong> الصفحة الرئيسية ← الغيابات ← نموذج
-                        التقرير ← التأكيد
-                    </p>
-                    <img src="Wilma_Absence_Wireframe.png" alt="إطار سلكي لتسجيل الغياب في Wilma"
-                        class="wireframe-image">
+            <div class="content">
+                <div class="section">
+                    <h2><span class="emoji-icon">📋</span> Projektin yleiskatsaus</h2>
+                    <div class="info-box">
+                        <h4>Tehtävän yksityiskohdat</h4>
+                        <p><strong>Alusta:</strong> Wilma (Suomen koulun hallintajärjestelmä)</p>
+                        <p><strong>Ominaisuus:</strong> Opiskelijan itse ilmoittama poissaolo seuraavalle päivälle</p>
+                        <p><strong>Laitetyyppi:</strong> Mobiili (iOS/Android)</p>
+                        <p><strong>Wireframe-tarkkuus:</strong> Keskitason tarkkuus</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- خطوات تدفق المستخدم -->
-            <div class="section">
-                <h2><span class="emoji-icon">🔄</span> خطوات تدفق المستخدم</h2>
-                <div class="flow-steps">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <div class="step-title">لوحة التحكم الرئيسية</div>
-                        <div class="step-description">
-                            يقوم الطالب بتسجيل الدخول إلى تطبيق Wilma والانتقال إلى قسم "Poissaolot" (الغيابات) من
-                            القائمة الرئيسية.
+                <div class="section">
+                    <h2><span class="emoji-icon">🎨</span> Wireframe-suunnittelu</h2>
+                    <div class="wireframe-container">
+                        <p style="margin-bottom: 25px; font-size: 18px; color: #3c1361; font-weight: 600;">
+                            <strong class="highlight">4-näytön käyttäjän kulku:</strong> Koti → Poissaolot →
+                            Ilmoituslomake → Vahvistus
+                        </p>
+                        <img src="Wilma_Absence_Wireframe.png" alt="Wilman poissaoloilmoituksen wireframe"
+                            class="wireframe-image">
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">🔄</span> Käyttäjän kulun vaiheet</h2>
+                    <div class="flow-steps">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-title">Kotinäyttö</div>
+                            <div class="step-description">
+                                Opiskelija kirjautuu Wilma-sovellukseen ja siirtyy "Poissaolot"-osioon päävalikosta.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-title">Poissaolojen yleiskatsaus</div>
+                            <div class="step-description">
+                                Tarkastele poissaolohistoriaa ja napauta "+ Ilmoita poissaolo" -painiketta aloittaaksesi
+                                uuden poissaolon ilmoittamisen.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-title">Ilmoituslomake</div>
+                            <div class="step-description">
+                                Täytä huomisen päivämäärä, valitse syy (sairaus, lääkäriaika jne.) ja lisää halutessasi
+                                lisätietoja.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-title">Vahvistus</div>
+                            <div class="step-description">
+                                Vastaanota onnistumisen vahvistus lähetetyillä tiedoilla ja ilmoitus siitä, että
+                                huoltajalle on ilmoitettu.
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <div class="step-title">نظرة عامة على الغيابات</div>
-                        <div class="step-description">
-                            عرض سجل الغيابات والنقر على زر "+ Ilmoita poissaolo" لبدء الإبلاغ عن غياب جديد.
+                <div class="section">
+                    <h2><span class="emoji-icon">✨</span> Tärkeimmät ominaisuudet</h2>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">🎯</span>
+                            <span>Yksinkertainen navigointi</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📅</span>
+                            <span>Esitäytetty päivämäärä</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📝</span>
+                            <span>Nopea syyn valinta</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">💬</span>
+                            <span>Valinnaiset tiedot</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Välitön vahvistus</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔔</span>
+                            <span>Huoltajan ilmoitus</span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <div class="step-title">نموذج التقرير</div>
-                        <div class="step-description">
-                            ملء تاريخ الغد، واختيار السبب (مرض، موعد طبيب، إلخ)، وإضافة تفاصيل اختيارية.
+                <div class="section">
+                    <h2><span class="emoji-icon">🎨</span> Suunnittelun eritelmät</h2>
+
+                    <h3>Harmoninen väripaletti</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #5c03bc;"></div>
+                            <div class="color-label">Syvä violetti</div>
+                            <div class="color-code">#5c03bc</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #3c1361;"></div>
+                            <div class="color-label">Tumma violetti</div>
+                            <div class="color-code">#3c1361</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #52307c;"></div>
+                            <div class="color-label">Keskivioletti</div>
+                            <div class="color-code">#52307c</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #b491c8;"></div>
+                            <div class="color-label">Vaalean violetti</div>
+                            <div class="color-code">#b491c8</div>
                         </div>
                     </div>
-
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <div class="step-title">التأكيد</div>
-                        <div class="step-description">
-                            تلقي تأكيد النجاح مع التفاصيل المقدمة وإشعار بأن ولي الأمر قد تم إبلاغه.
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            <!-- الرحلة التفصيلية -->
-            <div class="section">
-                <h2><span class="emoji-icon">🗺️</span> رحلة المستخدم الكاملة</h2>
-                <div class="journey-flow">
-                    <div class="journey-step">
-                        <strong>الدخول:</strong> الطالب يفتح تطبيق Wilma للهاتف المحمول
-                    </div>
-                    <div class="journey-arrow">↓</div>
-                    <div class="journey-step">
-                        <strong>التنقل:</strong> النقر على "Poissaolot" من القائمة الرئيسية
-                    </div>
-                    <div class="journey-arrow">↓</div>
-                    <div class="journey-step">
-                        <strong>الإجراء:</strong> النقر على زر "+ Ilmoita poissaolo"
-                    </div>
-                    <div class="journey-arrow">↓</div>
-                    <div class="journey-step">
-                        <strong>الإدخال:</strong> اختيار تاريخ الغد والسبب
-                    </div>
-                    <div class="journey-arrow">↓</div>
-                    <div class="journey-step">
-                        <strong>الإرسال:</strong> النقر على زر "Lähetä" (إرسال)
-                    </div>
-                    <div class="journey-arrow">↓</div>
-                    <div class="journey-step">
-                        <strong>التأكيد:</strong> عرض رسالة النجاح
-                    </div>
-                    <div class="journey-arrow">↓</div>
-                    <div class="journey-step">
-                        <strong>الخروج:</strong> العودة إلى لوحة التحكم الرئيسية
-                    </div>
-                </div>
-                <div class="info-box">
-                    <h4><span class="emoji-icon">⏱️</span> الوقت المقدر للإنجاز</h4>
-                    <p>30-60 ثانية من البداية إلى النهاية</p>
-                </div>
-            </div>
-
-            <!-- الميزات الرئيسية -->
-            <div class="section">
-                <h2><span class="emoji-icon">✨</span> الميزات الرئيسية</h2>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <span class="feature-icon">🎯</span>
-                        <span>تنقل بسيط</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">📅</span>
-                        <span>تاريخ معبأ مسبقاً</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">📝</span>
-                        <span>اختيار سريع للسبب</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">💬</span>
-                        <span>تفاصيل اختيارية</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✅</span>
-                        <span>تأكيد فوري</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🔔</span>
-                        <span>إشعار ولي الأمر</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- مواصفات التصميم -->
-            <div class="section">
-                <h2><span class="emoji-icon">🎨</span> مواصفات التصميم</h2>
-
-                <h3>لوحة الألوان المتناغمة</h3>
-                <div class="color-palette">
-                    <div class="color-swatch">
-                        <div class="color-box" style="background: #5c03bc;"></div>
-                        <div class="color-label">بنفسجي غامق</div>
-                        <div class="color-code">#5c03bc</div>
-                    </div>
-                    <div class="color-swatch">
-                        <div class="color-box" style="background: #3c1361;"></div>
-                        <div class="color-label">بنفسجي داكن</div>
-                        <div class="color-code">#3c1361</div>
-                    </div>
-                    <div class="color-swatch">
-                        <div class="color-box" style="background: #52307c;"></div>
-                        <div class="color-label">بنفسجي متوسط</div>
-                        <div class="color-code">#52307c</div>
-                    </div>
-                    <div class="color-swatch">
-                        <div class="color-box" style="background: #b491c8;"></div>
-                        <div class="color-label">بنفسجي فاتح</div>
-                        <div class="color-code">#b491c8</div>
-                    </div>
-                </div>
-
-                <h3>الطباعة والمسافات</h3>
-                <table class="specs-table">
-                    <thead>
-                        <tr>
-                            <th>العنصر</th>
-                            <th>المواصفات</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>العناوين الرئيسية</strong></td>
-                            <td>20px، عريض، Sans-serif</td>
-                        </tr>
-                        <tr>
-                            <td><strong>النص الأساسي</strong></td>
-                            <td>16px، عادي، Sans-serif</td>
-                        </tr>
-                        <tr>
-                            <td><strong>نص الأزرار</strong></td>
-                            <td>16px، نصف عريض، Sans-serif</td>
-                        </tr>
-                        <tr>
-                            <td><strong>التسميات</strong></td>
-                            <td>14px، عادي، Sans-serif</td>
-                        </tr>
-                        <tr>
-                            <td><strong>حشوة الشاشة</strong></td>
-                            <td>16px</td>
-                        </tr>
-                        <tr>
-                            <td><strong>مسافة العناصر</strong></td>
-                            <td>12px</td>
-                        </tr>
-                        <tr>
-                            <td><strong>ارتفاع الزر</strong></td>
-                            <td>48px</td>
-                        </tr>
-                        <tr>
-                            <td><strong>ارتفاع حقل الإدخال</strong></td>
-                            <td>44px</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- تفاصيل الشاشات -->
-            <div class="section">
-                <h2><span class="emoji-icon">📱</span> تفصيل الشاشات</h2>
-
-                <h3>الشاشة 1: لوحة التحكم الرئيسية</h3>
-                <div class="info-box">
-                    <p><strong>الغرض:</strong> نقطة الدخول الرئيسية لجميع ميزات Wilma</p>
-                    <p><strong>العناصر الرئيسية:</strong></p>
-                    <ul>
-                        <li>شعار Wilma والعنوان</li>
-                        <li>عرض اسم الطالب</li>
-                        <li>التاريخ الحالي</li>
-                        <li>قائمة التنقل مع 4 أقسام رئيسية</li>
-                    </ul>
-                    <p style="margin-top: 10px;"><strong>إجراء المستخدم:</strong> النقر على "Poissaolot" (الغيابات)</p>
-                </div>
-
-                <h3>الشاشة 2: نظرة عامة على الغيابات</h3>
-                <div class="info-box">
-                    <p><strong>الغرض:</strong> عرض سجل الغيابات وتمكين التقارير الجديدة</p>
-                    <p><strong>العناصر الرئيسية:</strong></p>
-                    <ul>
-                        <li>عنوان الصفحة "Poissaolot"</li>
-                        <li>زر العودة إلى الصفحة الرئيسية</li>
-                        <li>الإجراء الأساسي: زر "+ Ilmoita poissaolo"</li>
-                        <li>قائمة الغيابات السابقة مع التواريخ والأسباب</li>
-                    </ul>
-                    <p style="margin-top: 10px;"><strong>إجراء المستخدم:</strong> النقر على "+ Ilmoita poissaolo"</p>
-                </div>
-
-                <h3>الشاشة 3: نموذج الإبلاغ عن الغياب</h3>
-                <div class="info-box">
-                    <p><strong>الغرض:</strong> جمع معلومات الغياب من الطالب</p>
-                    <p><strong>العناصر الرئيسية:</strong></p>
-                    <ul>
-                        <li>عنوان النموذج "Ilmoita poissaolo"</li>
-                        <li>منتقي التاريخ (افتراضي: الغد)</li>
-                        <li>قائمة منسدلة للسبب (Sairaus، Lääkäriaika، إلخ)</li>
-                        <li>منطقة نص اختيارية للتفاصيل الإضافية</li>
-                        <li>أزرار الإلغاء والإرسال</li>
-                    </ul>
-                    <p style="margin-top: 10px;"><strong>إجراء المستخدم:</strong> ملء النموذج والنقر على "Lähetä"
-                        (إرسال)</p>
-                </div>
-
-                <h3>الشاشة 4: التأكيد</h3>
-                <div class="info-box">
-                    <p><strong>الغرض:</strong> تأكيد الإرسال الناجح</p>
-                    <p><strong>العناصر الرئيسية:</strong></p>
-                    <ul>
-                        <li>أيقونة علامة النجاح</li>
-                        <li>رسالة التأكيد</li>
-                        <li>ملخص المعلومات المقدمة</li>
-                        <li>رسالة إشعار ولي الأمر</li>
-                        <li>زر "العودة إلى الصفحة الرئيسية"</li>
-                    </ul>
-                    <p style="margin-top: 10px;"><strong>إجراء المستخدم:</strong> النقر على "Palaa etusivulle" للعودة
-                        إلى الصفحة الرئيسية</p>
-                </div>
-            </div>
-
-            <!-- الاعتبارات التقنية -->
-            <div class="section">
-                <h2><span class="emoji-icon">⚙️</span> الاعتبارات التقنية</h2>
-
-                <h3>إمكانية الوصول</h3>
-                <ul>
-                    <li>نص عالي التباين لسهولة القراءة</li>
-                    <li>أهداف اللمس بحد أدنى 44x44px (معيار iOS)</li>
-                    <li>تسميات متوافقة مع قارئ الشاشة</li>
-                    <li>حالات تركيز واضحة للتنقل</li>
-                </ul>
-
-                <h3>قواعد التحقق</h3>
-                <ul>
-                    <li>يجب أن يكون التاريخ غداً أو تاريخ مستقبلي</li>
-                    <li>يجب اختيار السبب قبل الإرسال</li>
-                    <li>المعلومات الإضافية اختيارية</li>
-                    <li>رسائل الخطأ معروضة بشكل مضمن</li>
-                </ul>
-
-                <h3>الإشعارات</h3>
-                <ul>
-                    <li>إشعار فوري بالتأكيد للطالب</li>
-                    <li>إشعار بالبريد الإلكتروني/الرسائل القصيرة لولي الأمر</li>
-                    <li>إشعار داخل التطبيق مرئي في Wilma</li>
-                </ul>
-            </div>
-
-            <!-- مبررات التصميم -->
-            <div class="section">
-                <h2><span class="emoji-icon">💡</span> مبررات التصميم</h2>
-
-                <h3>لماذا الهاتف المحمول؟</h3>
-                <p>يستخدم الطلاب عادةً الأجهزة المحمولة للمهام السريعة أثناء التنقل. تسجيل الغياب هو إجراء حساس للوقت
-                    غالباً ما يحتاج الطلاب إلى القيام به خارج ساعات الدراسة العادية، مما يجعل الهاتف المحمول المنصة
-                    المثالية.</p>
-
-                <h3>لماذا 4 شاشات؟</h3>
-                <p>يوفر تدفق الشاشات الأربع تقدماً واضحاً ومنطقياً يمنع ارتباك المستخدم مع الحفاظ على البساطة. كل شاشة
-                    لها غرض واحد ومركّز، مما يقلل من الحمل المعرفي.</p>
-
-                <h3>اللغة الفنلندية</h3>
-                <p>يُستخدم Wilma بشكل أساسي في فنلندا، لذا يستخدم الإطار السلكي تسميات فنلندية لتمثيل تجربة المستخدم
-                    الحقيقية بدقة. هذه الأصالة مهمة لمراجعة أصحاب المصلحة واختبار المستخدم.</p>
-
-                <h3>تاريخ الغد المعبأ مسبقاً</h3>
-                <p>بناءً على البحث، معظم تقارير الغياب تكون لليوم التالي. ملء هذا مسبقاً يقلل من الاحتكاك ويسرع العملية
-                    لحالة الاستخدام الأكثر شيوعاً.</p>
-            </div>
-
-            <!-- التحسينات المستقبلية -->
-            <div class="section">
-                <h2><span class="emoji-icon">🚀</span> التحسينات المستقبلية</h2>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <span class="feature-icon">📅</span>
-                        <span>اختيار عدة أيام</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🔄</span>
-                        <span>الغيابات المتكررة</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">📎</span>
-                        <span>إرفاق المستندات</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">📊</span>
-                        <span>إحصائيات الغياب</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🗓️</span>
-                        <span>تكامل التقويم</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🌐</span>
-                        <span>دعم متعدد اللغات</span>
-                    </div>
-                </div>
+            <div class="footer">
+                <p><strong class="highlight">Wilma-alusta - Opiskelijan poissaoloilmoituksen wireframe</strong></p>
+                <p><strong>Opiskelija:</strong> Abbas Alfarttoosi | <strong>Koulu:</strong> Business College Helsinki
+                </p>
+                <p>Keskitason tarkkuus mobiili wireframe | Luotu: 2026</p>
             </div>
         </div>
 
-        <div class="footer">
-            <p><strong class="highlight">منصة Wilma - إطار سلكي لتسجيل غياب الطالب</strong></p>
-            <p><strong>الطالب:</strong> Abbas Alfarttoosi | <strong>الكلية:</strong> Business College Helsinki</p>
-            <p>إطار سلكي متوسط الدقة للهاتف المحمول | تم الإنشاء: 2026</p>
-            <p style="margin-top: 15px; font-size: 15px;">
-                يوضح هذا الإطار السلكي نهجاً يركز على المستخدم لتسجيل الغياب،<br>
-                مع إعطاء الأولوية للبساطة والسرعة وإمكانية الوصول للطلاب الفنلنديين.
-            </p>
+        <!-- Swedish Content -->
+        <div class="lang-content" id="lang-sv">
+            <div class="header">
+                <h1><span class="emoji-icon">📱</span> Wilma-plattformen</h1>
+                <p>Medelhög trovärdighet - Studentens frånvaroanmälan</p>
+
+                <div class="student-info">
+                    <h3><span class="emoji-icon">👨‍🎓</span> Studentinformation</h3>
+                    <p><strong>Namn:</strong> Abbas Alfarttoosi</p>
+                    <p><strong>Skola:</strong> Business College Helsinki</p>
+                    <p><strong>År:</strong> 2026</p>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="section">
+                    <h2><span class="emoji-icon">📋</span> Projektöversikt</h2>
+                    <div class="info-box">
+                        <h4>Uppgiftsdetaljer</h4>
+                        <p><strong>Plattform:</strong> Wilma (Finlands skolhanteringssystem)</p>
+                        <p><strong>Funktion:</strong> Student självrapporterar frånvaro för nästa dag</p>
+                        <p><strong>Enhetstyp:</strong> Mobil (iOS/Android)</p>
+                        <p><strong>Wireframe-trovärdighet:</strong> Medelhög trovärdighet</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">🎨</span> Wireframe-design</h2>
+                    <div class="wireframe-container">
+                        <p style="margin-bottom: 25px; font-size: 18px; color: #3c1361; font-weight: 600;">
+                            <strong class="highlight">4-skärms användarflöde:</strong> Hem → Frånvaro → Rapportformulär
+                            → Bekräftelse
+                        </p>
+                        <img src="Wilma_Absence_Wireframe.png" alt="Wilma frånvaroanmälan wireframe"
+                            class="wireframe-image">
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">🔄</span> Användarflödessteg</h2>
+                    <div class="flow-steps">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-title">Hemskärm</div>
+                            <div class="step-description">
+                                Studenten loggar in på Wilma-appen och navigerar till avsnittet "Poissaolot" (Frånvaro)
+                                från huvudmenyn.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-title">Frånvaroöversikt</div>
+                            <div class="step-description">
+                                Visa frånvarohistorik och tryck på knappen "+ Ilmoita poissaolo" för att börja
+                                rapportera en ny frånvaro.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-title">Rapportformulär</div>
+                            <div class="step-description">
+                                Fyll i morgondagens datum, välj en anledning (sjukdom, läkarbesök, etc.) och lägg till
+                                detaljer om så önskas.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-title">Bekräftelse</div>
+                            <div class="step-description">
+                                Ta emot framgångsbekräftelse med inlämnade detaljer och meddelande om att
+                                vårdnadshavaren har informerats.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">✨</span> Nyckelfunktioner</h2>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">🎯</span>
+                            <span>Enkel navigering</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📅</span>
+                            <span>Förifyllt datum</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📝</span>
+                            <span>Snabbt anledningsval</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">💬</span>
+                            <span>Valfria detaljer</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Omedelbar bekräftelse</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔔</span>
+                            <span>Vårdnadshavarmeddelande</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">🎨</span> Designspecifikationer</h2>
+
+                    <h3>Harmonisk färgpalett</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #5c03bc;"></div>
+                            <div class="color-label">Djup lila</div>
+                            <div class="color-code">#5c03bc</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #3c1361;"></div>
+                            <div class="color-label">Mörk lila</div>
+                            <div class="color-code">#3c1361</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #52307c;"></div>
+                            <div class="color-label">Medellila</div>
+                            <div class="color-code">#52307c</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #b491c8;"></div>
+                            <div class="color-label">Ljus lila</div>
+                            <div class="color-code">#b491c8</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p><strong class="highlight">Wilma-plattformen - Studentens frånvaroanmälan wireframe</strong></p>
+                <p><strong>Student:</strong> Abbas Alfarttoosi | <strong>Skola:</strong> Business College Helsinki</p>
+                <p>Medelhög trovärdighet mobil wireframe | Skapad: 2026</p>
+            </div>
+        </div>
+
+        <!-- Arabic Content -->
+        <div class="lang-content" id="lang-ar" dir="rtl">
+            <div class="header">
+                <h1><span class="emoji-icon">📱</span> منصة Wilma</h1>
+                <p>إطار سلكي متوسط الدقة - تسجيل غياب الطالب</p>
+
+                <div class="student-info">
+                    <h3><span class="emoji-icon">👨‍🎓</span> معلومات الطالب</h3>
+                    <p><strong>الاسم:</strong> Abbas Alfarttoosi</p>
+                    <p><strong>الكلية:</strong> Business College Helsinki</p>
+                    <p><strong>السنة:</strong> 2026</p>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="section">
+                    <h2><span class="emoji-icon">📋</span> نظرة عامة على المشروع</h2>
+                    <div class="info-box">
+                        <h4>تفاصيل المهمة</h4>
+                        <p><strong>المنصة:</strong> Wilma (نظام إدارة المدارس الفنلندي)</p>
+                        <p><strong>الميزة:</strong> تسجيل الطالب لغيابه في اليوم التالي</p>
+                        <p><strong>نوع الجهاز:</strong> الهاتف المحمول (iOS/Android)</p>
+                        <p><strong>دقة الإطار السلكي:</strong> متوسطة الدقة</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">🎨</span> تصميم الإطار السلكي</h2>
+                    <div class="wireframe-container">
+                        <p style="margin-bottom: 25px; font-size: 18px; color: #3c1361; font-weight: 600;">
+                            <strong class="highlight">تدفق المستخدم من 4 شاشات:</strong> الصفحة الرئيسية ← الغيابات ←
+                            نموذج التقرير ← التأكيد
+                        </p>
+                        <img src="Wilma_Absence_Wireframe.png" alt="إطار سلكي لتسجيل الغياب في Wilma"
+                            class="wireframe-image">
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">🔄</span> خطوات تدفق المستخدم</h2>
+                    <div class="flow-steps">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-title">لوحة التحكم الرئيسية</div>
+                            <div class="step-description">
+                                يقوم الطالب بتسجيل الدخول إلى تطبيق Wilma والانتقال إلى قسم "Poissaolot" (الغيابات) من
+                                القائمة الرئيسية.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-title">نظرة عامة على الغيابات</div>
+                            <div class="step-description">
+                                عرض سجل الغيابات والنقر على زر "+ Ilmoita poissaolo" لبدء الإبلاغ عن غياب جديد.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-title">نموذج التقرير</div>
+                            <div class="step-description">
+                                ملء تاريخ الغد، واختيار السبب (مرض، موعد طبيب، إلخ)، وإضافة تفاصيل اختيارية.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-title">التأكيد</div>
+                            <div class="step-description">
+                                تلقي تأكيد النجاح مع التفاصيل المقدمة وإشعار بأن ولي الأمر قد تم إبلاغه.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">✨</span> الميزات الرئيسية</h2>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">🎯</span>
+                            <span>تنقل بسيط</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📅</span>
+                            <span>تاريخ معبأ مسبقاً</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📝</span>
+                            <span>اختيار سريع للسبب</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">💬</span>
+                            <span>تفاصيل اختيارية</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>تأكيد فوري</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔔</span>
+                            <span>إشعار ولي الأمر</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="emoji-icon">🎨</span> مواصفات التصميم</h2>
+
+                    <h3>لوحة الألوان المتناغمة</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #5c03bc;"></div>
+                            <div class="color-label">بنفسجي غامق</div>
+                            <div class="color-code">#5c03bc</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #3c1361;"></div>
+                            <div class="color-label">بنفسجي داكن</div>
+                            <div class="color-code">#3c1361</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #52307c;"></div>
+                            <div class="color-label">بنفسجي متوسط</div>
+                            <div class="color-code">#52307c</div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-box" style="background: #b491c8;"></div>
+                            <div class="color-label">بنفسجي فاتح</div>
+                            <div class="color-code">#b491c8</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p><strong class="highlight">منصة Wilma - إطار سلكي لتسجيل غياب الطالب</strong></p>
+                <p><strong>الطالب:</strong> Abbas Alfarttoosi | <strong>الكلية:</strong> Business College Helsinki</p>
+                <p>إطار سلكي متوسط الدقة للهاتف المحمول | تم الإنشاء: 2026</p>
+            </div>
         </div>
     </div>
+
+    <script>
+        function changeLanguage(lang) {
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Show selected language content
+            document.getElementById('lang-' + lang).classList.add('active');
+
+            // Update HTML dir attribute for RTL languages
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+            }
+        }
+    </script>
 </body>
 
 </html>
